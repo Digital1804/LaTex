@@ -1,0 +1,276 @@
+\documentclass{article}
+
+\usepackage[usenames]{color}
+\usepackage[russian]{babel}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{authblk}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[T1]{fontenc}
+
+\title{Code Style}
+\author{ИА-031 Обухович Ярослав, email: yar.obuxowi42002@gmail.com,  github: @Digital1804}
+\date{Февраль 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Введение}
+Стиль кода (code style) — это набор правил, как писать код в проекте. Они могут включать прямые рекомендации, примеры кода, ссылки на лучшие практики, «рецепты», что делать в спорных ситуациях. \cite{one}
+
+\section{C/C++}
+\subsection{Отступы в начале строки}
+
+Для отступов используется табуляция. Размер таба равен 4 пробелам.\\\\
+\newcommand*{\Tabulate}{\hspace*{0.5cm}}
+\begin{lstlisting}
+\begin{tabular}{ | l | }
+\hline
+\\
+int main() \{\\
+\Tabulate return 0;\\
+\}\\
+\\
+\hline
+\end{tabular}
+\end{lstlisting}
+\subsection{Пробелы}
+Используется 1 пробел между ключевым словом и открывающей скобкой:\\\\
+\begin{lstlisting}
+\begin{tabular}{ | l | }
+\hline
+\\
+if (condition)...\\
+while (condition)...\\
+for (initialisation; condition; step)...\\
+do \{\} while (condition)...\\
+\\
+\hline
+\end{tabular}\\
+\\\\
+Пробел всегда используется после знаков препинания.\\\\
+Используется один пробел до и после операторов сравнения и присваивания:\\
+До и после операторов сравнения используется отступ в один пробел:\\\\
+\begin{lstlisting}
+\begin{tabular}{ | l | }
+\hline
+\\
+int number = 0;\\
+for (int i = 0; i < size; i++) \{\}\\
+\\
+\hline
+\end{tabular}
+\end{lstlisting}
+\\
+\subsection{Объявление имен переменных, функций, структур и классов}
+Функции назваются в соответствии с целью ее работы, переменные, структуры и классы - с целью использования, слитно, заменяя пробелы на нижнее подчеркивание\\\\
+\begin{lstlisting}
+\begin{tabular}{ | l | }
+\hline
+\\int list[3] = [1, 2, 3];
+\\struct Node* node = NULL;
+\\void add\_to\_list(...);
+\\int sort\_tree(...);
+\\\\
+\hline
+\end{tabular}
+\end{lstlisting}
+\newpage
+\subsection{Функции}
+В порядке написании функций стоит придерживаться последовательности применения, чтобы не было ошибок.\\\\
+Между функциями обязательно оставляется пустая строка для более удобного листинга программы.\\\\
+Закрывающая скобка всегда ставится в соответствии с уровнем начала функции, к которой она принадлежит\\\\
+\begin{lstlisting}
+\begin{tabular}{ | l | }
+
+\hline
+\\
+void \colorbox{Cyan}{division}(double **matrix, int size) \{\\
+    \Tabulate ...
+\}\\\\
+
+void \colorbox{Yellow}{print\_matrix}(double **matrix, int size) \{\\
+    \Tabulate ...
+\}\\\\
+
+void gauss(Node *root, string *buffer) \{\\
+	\Tabulate ...\\
+	\Tabulate \colorbox{Cyan}{division}(matrix, size);\\
+	\Tabulate ...\\
+	\Tabulate \colorbox{Yellow}{print\_matrix}(matrix, size);\\
+
+\}\\
+\\
+\hline
+
+\end{tabular}
+\\\\
+\end{lstlisting}
+\newpage
+\subsection{Циклы}\\
+Для инициализации счетчика циклов используются переменные i, j, k. между оператором и параметрами цикла всегда ставится пробел.\cite{two}\\\\
+\large \textbf{for}\\\\
+\normalsize
+\begin{lstlisting}
+\begin{tabular}{ | l | }
+
+\hline
+\\
+for (int i = 0; i < SIZE; i++) \{\\
+         \Tabulate for (int j = 0; j < SIZE; j++) \{\\
+               \Tabulate\Tabulate.....................; \\
+           \Tabulate \} \\
+\}
+\\\\
+\hline
+
+\end{tabular}
+\\\\
+\end{lstlisting}
+\\\large \textbf{while}\\\\
+\normalsize
+\begin{left}
+\begin{lstlisting}
+\begin{tabular}{ | l | }
+
+\hline
+\\
+while (i < SIZE) \{\\
+               \Tabulate.....................; \\
+\}
+\\\\
+\hline
+
+\end{tabular}
+\\\\
+\end{lstlisting}\\
+\end{left}\\\\
+\\\large \textbf{do while}\\\\
+\begin{left}
+\begin{lstlisting}
+\begin{tabular}{ | l | }
+
+\hline
+\\
+do \{\\
+               \Tabulate.....................; \\
+        \} while (i < SIZE);
+\\\\
+\hline
+
+\end{tabular}
+\\\\
+\end{lstlisting}
+\end{left}\
+\newpage
+\subsection{switch}
+Перед каждым вариантом ставится отступ. После ключевого слова осуществляется переход на новую строку и, начиная с этой строки ставится двойной отступ.\\\\
+\begin{lstlisting}
+\begin{tabular}{ | l | }
+
+\hline
+\\
+switch (number) \{\\
+    \Tabulate case 1:\\
+        \Tabulate\Tabulate cout << \verb|"|first\verb|"| << endl;\\ 
+        \Tabulate\Tabulate break;\\
+    \Tabulate case 2:\\
+        \Tabulate\Tabulate cout << \verb|"|second\verb|"| << endl;\\ 
+        \Tabulate\Tabulate break;\\
+    \Tabulate case 3:\\
+        \Tabulate\Tabulate cout << \verb|"|third\verb|"| << endl;\\ 
+        \Tabulate\Tabulate break;\\
+\}
+\\\\
+\hline
+
+\end{tabular}
+\\
+\end{lstlisting}
+\subsection{if else}
+Каждый if и else пишется на отдельной строчки(кроме случая else if, тогда они пишутся через пробел). Фигурные скобки ставятся только в случае, если при попадании в условие выполняется более одного действия, иначе оно пишется через отступ.\\\\
+\begin{lstlisting}
+\begin{tabular}{ | l | }
+
+\hline
+\\
+if (a == b == c) \{\\
+    \Tabulate cout << \verb|"|Числа равны\verb|"| << endl;\\
+    \Tabulate return a;\\ 
+\}\\
+if (a >= b) \Tabulate return a;\\
+else if (b >= c) \Tabulate return b;\\
+else return c;\\
+\\
+\hline
+
+\end{tabular}
+\\\\
+\end{lstlisting}
+\subsection{Структуры}
+Для удобства в с ипользования структур, он объявляются с помощью typedef \cite{three}. Сами названия пишутся с большой буквы.\\\\
+\begin{lstlisting}
+\begin{tabular}{ | l | }
+
+\hline
+\\typedef struct Node \{\\
+    \Tabulate string *line;\\
+    \Tabulate int height;\\
+    \Tabulate struct Node *left;\\
+    \Tabulate struct Node *right;\\
+\} Node;
+\\\\
+\hline
+
+\end{tabular}
+\\\\
+\end{lstlisting}
+\subsection{Классы}
+\begin{lstlisting}
+\begin{tabular}{ | l |}
+
+\hline
+\\
+
+class Mobile \{\\
+private:\\
+    \Tabulate string MN;\\
+    \Tabulate string type;\\
+    \Tabulate int volume;\\
+public:\\
+    \Tabulate Mobile(string F, string t, int vol) \{\\
+        \Tabulate\Tabulate MN = F;\\
+        \Tabulate\Tabulate type = t;\\
+        \Tabulate\Tabulate volume = vol;\\
+    \Tabulate \}\\
+    \Tabulate void output\_to() \{\\
+        \Tabulate\Tabulate cout << \verb|"|Название мобильного устройства \verb|"| << MN << endl;\\
+    \Tabulate \}\\
+    \Tabulate void set\_MN(string f) \{\\
+        \Tabulate\Tabulate MN = f;\\
+    \Tabulate \}\\
+    \Tabulate void set\_type(int t) \{\\
+        \Tabulate\Tabulate type = t;\\
+    \Tabulate \}\\
+    \Tabulate void set\_volume(int vol) \{\\
+        \Tabulate\Tabulate volume = vol;\\
+    \Tabulate \}\\
+\};\\
+\\
+\hline
+
+\end{tabular}
+\\\\
+\end{lstlisting}
+\newpage
+\begin{thebibliography}{1}
+\bibitem{one}Стиль написания кода в команде.\\ [https://doka.guide/js/code-style/]\\
+\bibitem{two}Циклы. Операторы цикла\\
+[https://www.bestprog.net/ru/2017/09/04/cycles-operators-of-the-cycle-for-while-do-while\_ru/]
+\bibitem{three}Объявления Typedef
+[https://docs.microsoft.com/ru-ru/cpp/c-language/typedef-declarations?view=msvc-16]0\\
+\end{thebibliography}
+\bibliography{sample}
+
+\end{document}
